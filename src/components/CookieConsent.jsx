@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CONSENT_KEY = 'lf-consult-cookie-consent';
 // TODO: preencher com o ID real do Google Analytics da LF Consult quando disponível.
@@ -26,7 +27,7 @@ function applyConsent(prefs) {
   if (prefs.statistics) loadGoogleAnalytics();
 }
 
-export default function CookieConsent({ onOpenPrivacy }) {
+export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [statistics, setStatistics] = useState(false);
@@ -107,9 +108,9 @@ export default function CookieConsent({ onOpenPrivacy }) {
     <div className="cookie-banner" role="dialog" aria-label="Aviso de cookies">
       <p>
         Usamos cookies para melhorar sua experiência. Veja a{' '}
-        <button type="button" className="cookie-inline-link" onClick={onOpenPrivacy}>
+        <Link to="/politica-de-privacidade" className="cookie-inline-link">
           Política de Privacidade
-        </button>
+        </Link>
         .
       </p>
 

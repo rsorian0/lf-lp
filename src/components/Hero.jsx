@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import withBase from '../lib/withBase';
+import scrollToId from '../lib/scrollToId';
 
 export default function Hero({ start }) {
   const [stage, setStage] = useState({
@@ -43,7 +44,14 @@ export default function Hero({ start }) {
           Branding de luxo, treinamentos em customer experience e hospitalidade para hotéis, casas
           de temporada, clínicas, lojas e escritórios de arquitetura.
         </p>
-        <a href="#contato" className={`btn btn-light${stage.btn ? ' show' : ''}`}>
+        <a
+          href="#contato"
+          className={`btn btn-light${stage.btn ? ' show' : ''}`}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToId('contato');
+          }}
+        >
           Falar com a LF Consult
         </a>
       </div>

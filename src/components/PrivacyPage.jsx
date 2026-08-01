@@ -1,37 +1,27 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import withBase from '../lib/withBase';
 
-export default function PrivacyModal({ open, onClose }) {
+export default function PrivacyPage() {
   useEffect(() => {
-    if (!open) return undefined;
-    const prevOverflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = 'hidden';
-    function onKeyDown(e) {
-      if (e.key === 'Escape') onClose();
-    }
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.documentElement.style.overflow = prevOverflow;
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [open, onClose]);
-
-  if (!open) return null;
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="privacy-modal" role="dialog" aria-modal="true" aria-label="Política de Privacidade" onClick={onClose}>
-      <div className="privacy-modal-inner" onClick={(e) => e.stopPropagation()}>
-        <button
-          type="button"
-          className="privacy-modal-close"
-          onClick={onClose}
-          aria-label="Fechar política de privacidade"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <path d="M6 6l12 12M18 6 6 18" />
-          </svg>
-        </button>
+    <div className="privacy-page">
+      <div className="privacy-page-topbar">
+        <div className="privacy-page-wrap">
+          <Link to="/" aria-label="LF Consult">
+            <img src={withBase('/logo-horizontal.svg')} alt="LF Consult" />
+          </Link>
+          <Link to="/" className="privacy-page-back">
+            ← Voltar para o site
+          </Link>
+        </div>
+      </div>
 
-        <div className="privacy-modal-content">
+      <main className="privacy-page-main">
+        <div className="privacy-page-wrap privacy-page-content">
           <div className="eyebrow">LF Consult</div>
           <h1>Política de Privacidade</h1>
           <p className="privacy-updated">Última atualização: julho de 2026.</p>
@@ -103,7 +93,7 @@ export default function PrivacyModal({ open, onClose }) {
             .
           </p>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

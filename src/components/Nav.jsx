@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import withBase from '../lib/withBase';
+import scrollToId from '../lib/scrollToId';
 
 const LINKS = [
   { href: '#sobre', label: 'Sobre' },
@@ -39,6 +40,14 @@ export default function Nav() {
 
   const closeNav = () => setOpen(false);
 
+  // Scroll manual em vez de href="#id" puro — o site usa HashRouter, então
+  // deixar o navegador mudar location.hash seria interpretado como troca de
+  // rota (ver src/lib/scrollToId.js).
+  function goTo(e, id) {
+    e.preventDefault();
+    scrollToId(id);
+  }
+
   return (
     <>
       <nav className={scrolled ? 'scrolled' : ''}>
@@ -48,7 +57,11 @@ export default function Nav() {
         <ul>
           {LINKS.map((link, i) => (
             <li key={link.href}>
-              <a href={link.href} className={activeIndex === i ? 'active' : ''}>
+              <a
+                href={link.href}
+                className={activeIndex === i ? 'active' : ''}
+                onClick={(e) => goTo(e, link.href.slice(1))}
+              >
                 {link.label}
               </a>
             </li>
@@ -86,7 +99,10 @@ export default function Nav() {
               key={link.href}
               href={link.href}
               className={activeIndex === i ? 'active' : ''}
-              onClick={closeNav}
+              onClick={(e) => {
+                goTo(e, link.href.slice(1));
+                closeNav();
+              }}
             >
               {link.label}
             </a>

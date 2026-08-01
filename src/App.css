@@ -316,38 +316,30 @@ nav a.active{ opacity:1; }
 .video-modal-close:hover{ background: rgba(0,0,0,0.8); }
 .video-modal-close svg{ width:18px; height:18px; }
 
-/* Pop-up da política de privacidade */
-.privacy-modal{
-  position:fixed; inset:0; z-index:400;
-  background: rgba(20,20,20,0.55);
-  display:flex; align-items:flex-start; justify-content:center;
-  padding:40px 20px; overflow-y:auto;
+/* Página da política de privacidade */
+.privacy-page{ min-height:100vh; background: var(--paper); }
+.privacy-page-wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
+.privacy-page-topbar{ border-bottom:1px solid var(--line); padding:22px 0; }
+.privacy-page-topbar .privacy-page-wrap{
+  display:flex; align-items:center; justify-content:space-between;
 }
-.privacy-modal-inner{
-  position:relative; width:100%; max-width:760px; margin:auto 0;
-  background: var(--paper); padding:56px 48px 64px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+.privacy-page-topbar img{ height:22px; width:auto; }
+.privacy-page-back{
+  color: var(--ink); text-decoration:none; font-size:12px; letter-spacing:0.2em;
+  text-transform:uppercase; opacity:0.75; transition: opacity .25s ease;
 }
-.privacy-modal-close{
-  position:absolute; top:20px; right:20px; z-index:2;
-  width:40px; height:40px; border-radius:50%;
-  background: var(--paper-2); border:1px solid var(--line); color: var(--ink);
-  display:flex; align-items:center; justify-content:center; cursor:pointer;
-  transition: background .25s ease;
-}
-.privacy-modal-close:hover{ background: var(--line); }
-.privacy-modal-close svg{ width:18px; height:18px; }
-.privacy-modal-content h1{ font-size:34px; margin:6px 0 10px; }
-.privacy-modal-content .privacy-updated{ font-size:13px; color: var(--muted); margin-bottom:34px; }
-.privacy-modal-content p{ font-size:15px; line-height:1.85; color:#3a3733; margin-bottom:18px; }
-.privacy-modal-content h2{ font-size:20px; margin:40px 0 14px; }
-.privacy-modal-content ul{ margin:0 0 18px 20px; }
-.privacy-modal-content li{ font-size:15px; line-height:1.85; color:#3a3733; margin-bottom:10px; }
-.privacy-modal-content a{ color: var(--ink); }
-.privacy-modal-content strong{ font-weight:500; }
+.privacy-page-back:hover{ opacity:1; }
+.privacy-page-main{ padding:64px 0 100px; }
+.privacy-page-content h1{ font-size:34px; margin:6px 0 10px; }
+.privacy-page-content .privacy-updated{ font-size:13px; color: var(--muted); margin-bottom:34px; }
+.privacy-page-content p{ font-size:15px; line-height:1.85; color:#3a3733; margin-bottom:18px; }
+.privacy-page-content h2{ font-size:20px; margin:40px 0 14px; }
+.privacy-page-content ul{ margin:0 0 18px 20px; }
+.privacy-page-content li{ font-size:15px; line-height:1.85; color:#3a3733; margin-bottom:10px; }
+.privacy-page-content a{ color: var(--ink); }
+.privacy-page-content strong{ font-weight:500; }
 @media(max-width:700px){
-  .privacy-modal{ padding:0; }
-  .privacy-modal-inner{ padding:64px 24px 48px; max-width:none; min-height:100%; }
+  .privacy-page-main{ padding:48px 0 72px; }
 }
 
 /* GALERIA — carrossel deslizando continuamente pro lado */

@@ -1,5 +1,7 @@
+import { Link, useLocation } from 'react-router-dom';
 import KunlatekMark from './icons/KunlatekMark';
 import withBase from '../lib/withBase';
+import scrollToId from '../lib/scrollToId';
 
 const LINKS = [
   { href: '#sobre', label: 'Sobre' },
@@ -8,8 +10,20 @@ const LINKS = [
   { href: '#contato', label: 'Contato' },
 ];
 
-export default function Footer({ onOpenPrivacy }) {
+export default function Footer() {
   const year = new Date().getFullYear();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  // No rodapé, os links de seção precisam funcionar tanto na home (rola até
+  // a seção) quanto em outra rota (ex.: Política de Privacidade — nesse caso
+  // navega para "/" e o próprio Home rola até a seção depois de montar).
+  function handleSectionClick(e, id) {
+    if (isHome) {
+      e.preventDefault();
+      scrollToId(id);
+    }
+  }
 
   return (
     <footer>
@@ -22,11 +36,19 @@ export default function Footer({ onOpenPrivacy }) {
 
           <div className="foot-col">
             <div className="foot-col-title">Menu</div>
-            {LINKS.map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
+            {LINKS.map((link) => {
+              const id = link.href.slice(1);
+              return (
+                <Link
+                  key={link.href}
+                  to="/"
+                  state={{ scrollTo: id }}
+                  onClick={(e) => handleSectionClick(e, id)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="foot-col">
@@ -63,9 +85,9 @@ export default function Footer({ onOpenPrivacy }) {
           <div className="foot-legal">
             <div className="foot-copy">© {year} LF Consult. Todos os direitos reservados.</div>
             <div className="foot-legal-links">
-              <button type="button" onClick={onOpenPrivacy} className="foot-legal-link">
+              <Link to="/politica-de-privacidade" className="foot-legal-link">
                 Política de Privacidade
-              </button>
+              </Link>
             </div>
           </div>
           <a
