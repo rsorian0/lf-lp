@@ -8,7 +8,7 @@ const LINKS = [
   { href: '#contato', label: 'Contato' },
 ];
 
-export default function Footer() {
+export default function Footer({ onOpenPrivacy }) {
   const year = new Date().getFullYear();
 
   return (
@@ -63,9 +63,9 @@ export default function Footer() {
           <div className="foot-legal">
             <div className="foot-copy">© {year} LF Consult. Todos os direitos reservados.</div>
             <div className="foot-legal-links">
-              <a href={withBase('/politica-de-privacidade.html')} className="foot-legal-link">
+              <button type="button" onClick={onOpenPrivacy} className="foot-legal-link">
                 Política de Privacidade
-              </a>
+              </button>
             </div>
           </div>
           <a

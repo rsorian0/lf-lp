@@ -23,11 +23,12 @@ Gera a pasta `dist/` pronta para deploy em qualquer hospedagem estática (Vercel
 ## Estrutura
 
 - `src/App.jsx` — monta as seções da página.
-- `src/components/` — um componente por seção (Nav, Hero, Onda, Numeros, Sobre, Pilares, Clientes, Depoimentos, Galeria, Cta, Footer, CookieConsent).
+- `src/components/` — um componente por seção (Nav, Hero, Onda, Numeros, Sobre, Pilares, Clientes, Depoimentos, Galeria, Cta, Footer, CookieConsent, PrivacyModal).
 - `src/hooks/useReveal.js` — hook de scroll-reveal via IntersectionObserver.
 - `src/hooks/useCountUp.js` — hook de contagem animada dos números.
+- `src/lib/withBase.js` — helper que prefixa caminhos de `public/` com o base path do Vite (necessário para funcionar tanto em domínio próprio quanto em GitHub Pages de projeto).
 - `src/App.css` — estilos globais (paleta, tipografia, animações).
-- `public/` — logos, símbolo da marca, fotos/vídeo e a página estática `politica-de-privacidade.html`.
+- `public/` — logos, símbolo da marca, fotos/vídeo e a imagem de Open Graph (`og-image.jpg`).
 
 ## Cookies e privacidade
 
@@ -35,7 +36,7 @@ O banner de cookies (`src/components/CookieConsent.jsx`) segue o padrão usado n
 
 - O carregamento do Google Analytics só é ativado se a categoria "Estatísticas" for aceita.
 - **Pendência:** o `GA_ID` em `CookieConsent.jsx` está vazio — precisa do ID real do Google Analytics da LF Consult para o rastreamento funcionar.
-- A Política de Privacidade é a página estática `public/politica-de-privacidade.html` (não faz parte do app React, então não depende de configuração de rotas no servidor).
+- A Política de Privacidade é um componente React (`src/components/PrivacyModal.jsx`) que abre como um modal por cima da página — sem rota própria, sem depender de configuração de servidor. É acionado pelo link no rodapé e no banner de cookies (prop `onOpenPrivacy`, controlada em `App.jsx`).
 
 ## Pendências de conteúdo
 

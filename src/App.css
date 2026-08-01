@@ -316,6 +316,40 @@ nav a.active{ opacity:1; }
 .video-modal-close:hover{ background: rgba(0,0,0,0.8); }
 .video-modal-close svg{ width:18px; height:18px; }
 
+/* Pop-up da política de privacidade */
+.privacy-modal{
+  position:fixed; inset:0; z-index:400;
+  background: rgba(20,20,20,0.55);
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:40px 20px; overflow-y:auto;
+}
+.privacy-modal-inner{
+  position:relative; width:100%; max-width:760px; margin:auto 0;
+  background: var(--paper); padding:56px 48px 64px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+.privacy-modal-close{
+  position:absolute; top:20px; right:20px; z-index:2;
+  width:40px; height:40px; border-radius:50%;
+  background: var(--paper-2); border:1px solid var(--line); color: var(--ink);
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  transition: background .25s ease;
+}
+.privacy-modal-close:hover{ background: var(--line); }
+.privacy-modal-close svg{ width:18px; height:18px; }
+.privacy-modal-content h1{ font-size:34px; margin:6px 0 10px; }
+.privacy-modal-content .privacy-updated{ font-size:13px; color: var(--muted); margin-bottom:34px; }
+.privacy-modal-content p{ font-size:15px; line-height:1.85; color:#3a3733; margin-bottom:18px; }
+.privacy-modal-content h2{ font-size:20px; margin:40px 0 14px; }
+.privacy-modal-content ul{ margin:0 0 18px 20px; }
+.privacy-modal-content li{ font-size:15px; line-height:1.85; color:#3a3733; margin-bottom:10px; }
+.privacy-modal-content a{ color: var(--ink); }
+.privacy-modal-content strong{ font-weight:500; }
+@media(max-width:700px){
+  .privacy-modal{ padding:0; }
+  .privacy-modal-inner{ padding:64px 24px 48px; max-width:none; min-height:100%; }
+}
+
 /* GALERIA — carrossel deslizando continuamente pro lado */
 .galeria{
   width:100%; overflow:hidden;
@@ -387,6 +421,7 @@ footer{ background: var(--paper-2); padding:64px 60px 28px; }
 .foot-copy{ font-size:12px; letter-spacing:0.05em; color: var(--muted); }
 .foot-legal-links{ display:flex; gap:16px; flex-wrap:wrap; }
 .foot-legal-link{
+  font: inherit; background:none; border:none; cursor:pointer; margin:0;
   font-size:12px; color: var(--muted); text-decoration:none;
   border-bottom:1px solid var(--line); padding-bottom:1px; width:fit-content;
   transition: color .25s ease, border-color .25s ease;
@@ -458,8 +493,13 @@ footer{ background: var(--paper-2); padding:64px 60px 28px; }
 }
 @keyframes cookie-in{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
 .cookie-banner p{ flex:1 1 280px; margin:0; font-size:12.5px; font-weight:300; line-height:1.6; color: var(--muted); }
-.cookie-banner p a{ color: var(--ink); border-bottom:1px solid var(--ink); }
-.cookie-banner p a:hover{ opacity:0.7; }
+.cookie-inline-link{
+  font-family:'Jost', sans-serif; font-size:inherit; font-weight:400;
+  background:none; border:none; padding:0; margin:0; cursor:pointer;
+  color: var(--ink); text-decoration:underline; text-underline-offset:3px;
+  transition: color .25s ease;
+}
+.cookie-inline-link:hover{ color: var(--muted); }
 
 .cookie-cats{
   flex:1 1 100%; order:3;
