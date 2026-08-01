@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal';
+import withBase from '../lib/withBase';
 
 const IMAGES = [
   { src: '/photos/galeria-1.webp', pos: 'center 20%' },
@@ -20,7 +21,7 @@ export default function Galeria() {
         {track.map((img, i) => (
           <img
             key={i}
-            src={img.src}
+            src={withBase(img.src)}
             alt=""
             style={img.pos ? { objectPosition: img.pos } : undefined}
             loading="lazy"

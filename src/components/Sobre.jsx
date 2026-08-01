@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal';
+import withBase from '../lib/withBase';
 
 export default function Sobre() {
   const [photoRef, photoIn] = useReveal();
@@ -9,7 +10,7 @@ export default function Sobre() {
       <img
         ref={photoRef}
         className={`photo reveal reveal-left${photoIn ? ' in-view' : ''}`}
-        src="/photos/lf-retrato.webp"
+        src={withBase('/photos/lf-retrato.webp')}
         alt="Luiz Felipe, fundador da LF Consult"
         style={{ objectPosition: 'top' }}
         loading="lazy"
@@ -17,7 +18,7 @@ export default function Sobre() {
       />
       <div ref={textRef} className={`text reveal reveal-right${textIn ? ' in-view' : ''}`}>
         <div className="symbol-loose" style={{ margin: '0 0 18px', filter: 'none' }}>
-          <img src="/symbol-mark.svg" alt="" style={{ filter: 'none' }} />
+          <img src={withBase('/symbol-mark.svg')} alt="" style={{ filter: 'none' }} />
         </div>
         <h2>
           O amigo dos

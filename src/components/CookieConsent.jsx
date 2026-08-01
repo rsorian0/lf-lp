@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import withBase from '../lib/withBase';
 
 const CONSENT_KEY = 'lf-consult-cookie-consent';
 // TODO: preencher com o ID real do Google Analytics da LF Consult quando disponível.
@@ -107,7 +108,7 @@ export default function CookieConsent() {
     <div className="cookie-banner" role="dialog" aria-label="Aviso de cookies">
       <p>
         Usamos cookies para melhorar sua experiência. Veja a{' '}
-        <a href="/politica-de-privacidade.html">Política de Privacidade</a>.
+        <a href={withBase('/politica-de-privacidade.html')}>Política de Privacidade</a>.
       </p>
 
       {expanded && (

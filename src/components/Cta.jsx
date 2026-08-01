@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal';
+import withBase from '../lib/withBase';
 
 // Objeto estável (fora do componente) para não recriar o IntersectionObserver
 // a cada render — useReveal recria o observer sempre que "options" muda de
@@ -15,11 +16,11 @@ export default function Cta() {
   return (
     <section className="cta" id="contato" ref={sectionRef}>
       {sectionNear && (
-        <video className="cta-video" src="/photos/cta-video.mp4" autoPlay muted loop playsInline />
+        <video className="cta-video" src={withBase('/photos/cta-video.mp4')} autoPlay muted loop playsInline />
       )}
       <div ref={ref} className={`cta-inner${inView ? ' in-view' : ''}`}>
         <div className="symbol-loose">
-          <img src="/symbol-mark.svg" alt="" />
+          <img src={withBase('/symbol-mark.svg')} alt="" />
         </div>
         <div className="eyebrow-flanked">
           <span className="line" style={{ background: 'rgba(250,248,244,0.4)' }}></span>

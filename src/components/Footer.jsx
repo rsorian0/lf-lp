@@ -1,4 +1,5 @@
 import KunlatekMark from './icons/KunlatekMark';
+import withBase from '../lib/withBase';
 
 const LINKS = [
   { href: '#sobre', label: 'Sobre' },
@@ -15,7 +16,7 @@ export default function Footer() {
       <div className="foot-inner">
         <div className="foot-grid">
           <div className="foot-brand">
-            <img src="/logo-horizontal.svg" alt="LF Consult" className="foot-logo" />
+            <img src={withBase('/logo-horizontal.svg')} alt="LF Consult" className="foot-logo" />
             <p>Servir, desenvolver talentos<br />e conectar pessoas.</p>
           </div>
 
@@ -62,7 +63,7 @@ export default function Footer() {
           <div className="foot-legal">
             <div className="foot-copy">© {year} LF Consult. Todos os direitos reservados.</div>
             <div className="foot-legal-links">
-              <a href="/politica-de-privacidade.html" className="foot-legal-link">
+              <a href={withBase('/politica-de-privacidade.html')} className="foot-legal-link">
                 Política de Privacidade
               </a>
             </div>

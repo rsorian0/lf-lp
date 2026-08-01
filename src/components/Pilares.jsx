@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal';
+import withBase from '../lib/withBase';
 
 const PILLARS = [
   {
@@ -26,14 +27,14 @@ function Card({ photo, title, text, objectPosition }) {
     <div ref={ref} className={`card${inView ? ' in-view' : ''}`}>
       <img
         className="photo"
-        src={photo}
+        src={withBase(photo)}
         alt=""
         style={objectPosition ? { objectPosition } : undefined}
         loading="lazy"
         decoding="async"
       />
       <div className="c-inner">
-        <img className="num" src="/symbol-mark.svg" alt="" />
+        <img className="num" src={withBase('/symbol-mark.svg')} alt="" />
         <h3>{title}</h3>
         <p>{text}</p>
       </div>

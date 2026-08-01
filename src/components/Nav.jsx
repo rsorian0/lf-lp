@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import withBase from '../lib/withBase';
 
 const LINKS = [
   { href: '#sobre', label: 'Sobre' },
@@ -42,7 +43,7 @@ export default function Nav() {
     <>
       <nav className={scrolled ? 'scrolled' : ''}>
         <div className="logo">
-          <img className="logo-symbol" src="/symbol-mark.svg" alt="LF Consult" />
+          <img className="logo-symbol" src={withBase('/symbol-mark.svg')} alt="LF Consult" />
         </div>
         <ul>
           {LINKS.map((link, i) => (
@@ -78,7 +79,7 @@ export default function Nav() {
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         </button>
-        <img className="mobile-nav-symbol" src="/symbol-mark.svg" alt="" />
+        <img className="mobile-nav-symbol" src={withBase('/symbol-mark.svg')} alt="" />
         <nav className="mobile-nav-links">
           {LINKS.map((link, i) => (
             <a

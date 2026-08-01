@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import useReveal from '../hooks/useReveal';
+import withBase from '../lib/withBase';
 
 // Cada depoimento aponta para um vídeo real do cliente. Enquanto o vídeo não
 // chega, "src" fica null e o card mostra um placeholder — nunca um vídeo falso.
@@ -19,7 +20,7 @@ function VideoCard({ name, src, onOpen }) {
       <div className="quote-video-frame">
         {src ? (
           <>
-            <video src={src} muted playsInline preload="metadata" onClick={onOpen} />
+            <video src={withBase(src)} muted playsInline preload="metadata" onClick={onOpen} />
             <button
               type="button"
               className="quote-play"
@@ -82,7 +83,7 @@ function VideoModal({ testimonial, onClose }) {
             <path d="M6 6l12 12M18 6 6 18" />
           </svg>
         </button>
-        <video ref={videoRef} src={testimonial.src} controls playsInline />
+        <video ref={videoRef} src={withBase(testimonial.src)} controls playsInline />
       </div>
     </div>
   );

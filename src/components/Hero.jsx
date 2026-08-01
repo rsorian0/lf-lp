@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import withBase from '../lib/withBase';
 
 export default function Hero({ start }) {
   const [stage, setStage] = useState({
@@ -30,11 +31,11 @@ export default function Hero({ start }) {
 
   return (
     <section className="hero">
-      <img className="hero-symbol" src="/symbol-mark.svg" alt="" />
+      <img className="hero-symbol" src={withBase('/symbol-mark.svg')} alt="" />
       <div className="hero-content">
         <img
           className={`hero-logo${stage.logo ? ' show' : ''}`}
-          src="/logo-horizontal.svg"
+          src={withBase('/logo-horizontal.svg')}
           alt="LF Consult"
         />
         <h1 className={stage.title ? 'show' : ''}>Servir, desenvolver talentos e conectar pessoas.</h1>
