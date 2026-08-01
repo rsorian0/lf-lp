@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+dist-verify-*/
+
+# editor/OS
+.DS_Store
+*.log
+
+# env
+.env
+.env.local
