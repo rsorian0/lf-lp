@@ -1,15 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 
-// HashRouter (URLs tipo /#/politica-de-privacidade) em vez de BrowserRouter:
-// funciona no GitHub Pages sem nenhuma configuração extra no servidor, e abrir
-// o link direto ou dar F5 na página nunca dá 404.
+// BrowserRouter: URL limpa (/politica-de-privacidade, sem #). No GitHub Pages
+// isso só funciona porque o build também gera um dist/404.html idêntico ao
+// index.html (ver script "build" no package.json) — o GitHub Pages serve esse
+// 404.html pra qualquer rota que não exista fisicamente, e o React Router
+// assume a partir daí. `basename` usa o mesmo base do Vite (ver vite.config.js)
+// pra funcionar tanto em domínio próprio quanto em usuario.github.io/repo/.
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>,
 )
