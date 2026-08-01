@@ -12,6 +12,8 @@ const CLIENTS = [
 
 export default function Clientes() {
   const [ref, inView] = useReveal();
+  // duplica a lista para o loop contínuo do carrossel (CSS translateX -50%)
+  const track = [...CLIENTS, ...CLIENTS];
 
   return (
     <section className="clientes" id="clientes">
@@ -21,9 +23,13 @@ export default function Clientes() {
         <span className="line"></span>
       </div>
       <div ref={ref} className={`logos${inView ? ' in-view' : ''}`}>
-        {CLIENTS.map((c) => (
-          <span key={c}>{c}</span>
-        ))}
+        <div className="logos-track">
+          {track.map((c, i) => (
+            <span key={i} className="logo-label">
+              {c}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
