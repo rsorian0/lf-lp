@@ -1,8 +1,8 @@
 import useReveal from '../hooks/useReveal';
 
 // Placeholder: aqui entram os SVGs de cada marca cliente. Até lá, repete
-// "Label" no lugar dos nomes reais.
-const CLIENTS = Array(10).fill('Label');
+// "Cliente" no lugar dos nomes reais.
+const CLIENTS = Array(10).fill('Cliente');
 
 export default function Clientes() {
   const [ref, inView] = useReveal();
