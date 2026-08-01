@@ -249,14 +249,13 @@ nav a.active{ opacity:1; }
 }
 .logos.in-view{ opacity:1; transform:scale(1); }
 .logos-track{
-  display:flex; align-items:center; gap:24px; width:max-content;
+  display:flex; align-items:center; gap:52px; width:max-content;
   animation: logos-scroll 32s linear infinite;
 }
 .logos-track:hover{ animation-play-state: paused; }
 .logo-label{
   flex:none; white-space:nowrap;
-  font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.05em; color:#5c584f;
-  border:1px solid rgba(20,20,20,0.16); padding:11px 26px;
+  font-family:'Cinzel', serif; font-size:15px; letter-spacing:0.05em; color:#5c584f;
 }
 @keyframes logos-scroll{
   from{ transform:translateX(0); }
@@ -470,8 +469,8 @@ footer{ background: var(--paper-2); padding:64px 60px 28px; }
 
   .clientes{ padding:60px 0; }
   .clientes .eyebrow-flanked{ padding:0 24px; }
-  .logos-track{ gap:14px; }
-  .logo-label{ font-size:13px; padding:9px 18px; }
+  .logos-track{ gap:28px; }
+  .logo-label{ font-size:13px; }
 
   .quote{ padding:70px 24px; }
   .quote-grid{ grid-template-columns:1fr; gap:44px; max-width:420px; }
